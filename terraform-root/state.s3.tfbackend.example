@@ -1,0 +1,4 @@
+# Supply your own private, versioned bucket and its AWS region.
+bucket = "REPLACE_WITH_YOUR_STATE_BUCKET"
+key    = "examples/vpc-ec2/terraform.tfstate"
+region = "REPLACE_WITH_BUCKET_REGION"

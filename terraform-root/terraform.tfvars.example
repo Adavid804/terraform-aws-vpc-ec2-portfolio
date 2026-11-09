@@ -1,0 +1,37 @@
+# Copy to terraform.tfvars, then use your region/AZ, names and tag values.
+aws_region         = "us-east-1"
+availability_zones = ["us-east-1a"]
+name               = "example-internet"
+
+tags = {
+  Environment = "dev"
+  CostCenter  = "REPLACE_WITH_COST_CENTER"
+  Owner       = "REPLACE_WITH_OWNER"
+}
+
+network_mode        = "public"
+vpc_cidr            = "10.42.0.0/16"
+public_subnet_cidrs  = ["10.42.1.0/24"]
+private_subnet_cidrs = []
+instance_type       = "t3.micro"
+
+# Recommended before deployment: pin an actual regional x86_64 AMI ID.
+ami_id = ""
+
+# Prefer an existing SSM-enabled instance profile for administration.
+# iam_instance_profile = "existing-ssm-instance-profile"
+
+# Alternatively, public-mode SSH needs BOTH an existing regional key and
+# your real public administrator IP. Documentation address below is not usable.
+# key_name          = "existing-ec2-key-pair"
+# ssh_allowed_cidrs = ["203.0.113.10/32"]
+
+# Private outbound-only alternative: change these two values together.
+# network_mode        = "private"
+# private_subnet_cidrs = ["10.42.101.0/24"]
+# single_nat_gateway  = true
+# No public IP; no direct internet SSH. A NAT gateway and EIP will be billed.
+
+# Optional regional keys; keys must already exist and allow the relevant use.
+# flow_log_kms_key_id    = "arn:aws:kms:us-east-1:ACCOUNT_ID:key/KEY_ID"
+# root_volume_kms_key_id = "arn:aws:kms:us-east-1:ACCOUNT_ID:key/KEY_ID"

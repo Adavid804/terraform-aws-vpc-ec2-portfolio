@@ -1,0 +1,41 @@
+# Local .terraform directories
+**/.terraform/*
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Variable files may contain sensitive values.
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example
+
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Saved plans
+*.tfplan
+tfplan
+*.tfplan.json
+tfplan.json
+
+# Local backend settings and credentials
+backend.local.tf
+*.tfbackend
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+
+# Terraform CLI configuration
+.terraformrc
+terraform.rc
