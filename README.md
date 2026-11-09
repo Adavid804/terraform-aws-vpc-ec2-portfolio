@@ -11,6 +11,30 @@ The instance can send ICMP echo requests to an explicitly allowed public IPv4 CI
 
 ## Architecture and connectivity path
 
+```mermaid
+flowchart TB
+    Admin["Administrator"]
+    SSM["AWS Systems Manager"]
+    Internet["Internet / 1.1.1.1"]
+
+    subgraph VPC["AWS Virtual Private Cloud (VPC)"]
+        subgraph Subnet["Public Subnet"]
+            EC2["Amazon EC2 Instance"]
+            SG["Security Group<br/>No Inbound Rules"]
+            EC2 --- SG
+        end
+
+        RT["Public Route Table<br/>0.0.0.0/0"]
+        IGW["Internet Gateway"]
+    end
+
+    Admin --> SSM
+    SSM -->|"Session Manager"| EC2
+    EC2 -->|"Outbound Traffic"| RT
+    RT --> IGW
+    IGW -->|"ICMP Ping"| Internet
+```
+
 ```text
 Operator
    |  AWS Systems Manager Session Manager (no inbound SSH)
